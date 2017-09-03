@@ -14,7 +14,7 @@ jobs:
       - restore_cache:
           keys:
           - pants-cache--{{ checksum "pants.ini" }}
-          - local-cache
+          - local-cache-
       - run:
           name: install python
           command: sudo apt-get install python-dev python-pip
@@ -31,7 +31,7 @@ jobs:
           when: always
           key: pants-cache--{{ checksum "pants.ini" }}
       - save_cache:
-          key: local-cache
+          key: local-cache-{{epoch}}
           when: always
           paths:
             - .cache
