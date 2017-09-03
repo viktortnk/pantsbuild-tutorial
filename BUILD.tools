@@ -1,21 +1,3 @@
-SCALA_REV = '2.12.3'
-
-jar_library(name='scala-library',
-            jars=[
-                jar(org='org.scala-lang', name='scala-library', rev=SCALA_REV),
-            ])
-
-jar_library(name='scalac_2_12',
-            jars=[
-                jar(org='org.scala-lang', name='scala-compiler', rev=SCALA_REV),
-            ])
-
-target(name='scala_repl_2_12',
-       dependencies=[
-           ':scalac_2_12',
-           ':scala-library',
-       ])
-
 jar_library(name='scalafmt',
             jars=[
                 scala_jar(org='com.geirsson', name='scalafmt-cli', rev='1.2.0')
