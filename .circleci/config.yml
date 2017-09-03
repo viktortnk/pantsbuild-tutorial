@@ -7,7 +7,6 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      # Customize the JVM maximum heap limit
       PANTS_CONFIG_FILES: pants.ci.ini
 
     steps:
@@ -15,7 +14,9 @@ jobs:
       - restore_cache:
           keys:
           - pants-cache--{{ checksum "pants.ini" }}
-      - run: sudo apt-get install python-dev python-pip
+      - run:
+          name: install python
+          command: sudo apt-get install python-dev python-pip
       - run: pip install invoke
         
       - run: echo "hello world"
@@ -27,3 +28,7 @@ jobs:
             - ~/.cache/pants
             - ~/.cache/ivy2
           key: pants-cache--{{ checksum "pants.ini" }}
+      - save_cache:
+          key: local-cache
+          paths:
+            - .cache
