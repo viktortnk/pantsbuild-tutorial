@@ -28,8 +28,10 @@ jobs:
           paths:
             - ~/.cache/pants
             - ~/.cache/ivy2
+          when: always
           key: pants-cache--{{ checksum "pants.ini" }}
       - save_cache:
           key: local-cache
+          when: always
           paths:
             - .cache
