@@ -18,7 +18,7 @@ jobs:
         
       - run: echo "hello world"
       - run: env
-      - run: ./pants compile src/::
+      - run: "./pants compile src/::"
 
       - save_cache:
           paths:
