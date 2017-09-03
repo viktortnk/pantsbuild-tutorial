@@ -15,7 +15,7 @@ jobs:
       - restore_cache:
           keys:
           - pants-cache--{{ checksum "pants.ini" }}
-      - run: sudo apt-get install python2.7-dev
+      - run: sudo apt-get install python-dev python-pip
       - run: pip install invoke
         
       - run: echo "hello world"
